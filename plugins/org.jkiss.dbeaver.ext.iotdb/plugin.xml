@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?eclipse version="3.2"?>
+
+<plugin>
+
+    <extension point="org.jkiss.dbeaver.dataSourceProvider">
+
+        <!-- IoTDB -->
+        <datasource
+                class="org.jkiss.dbeaver.ext.iotdb.IoTDBDataSourceProvider"
+                description="%datasource.iotdb.description"
+                id="iotdb"
+                parent="generic"
+                label="IoTDB"
+                icon="icons/iotdb_icon.png"
+                dialect="iotdb">
+                           
+               <tree
+                  icon="icons/iotdb_icon.png"
+                  label="IoTDB data source"
+                  path="mysql">
+                <folder type="org.jkiss.dbeaver.ext.iotdb.model.IoTDBDatabase" label="%tree.databases.node.name" icon="#folder_schema" description="%stroge group">
+                    <items label="%tree.database.node.name" path="database" property="catalogs" icon="#database" optional="true">
+                          <folder type="org.jkiss.dbeaver.ext.iotdb.model.IoTDBTable" label="%tree.measurements.node.name" icon="#folder_table" description="Measurements">
+                            <items label="%tree.measurements.node.name" path="table" property="tables" icon="#table" >
+                                <!--<folder type="org.jkiss.dbeaver.ext.iotdb.model.IoTDBTableColumn" label="%tree.measurement.node.name" icon="#columns" description="Filed">
+                                    <items label="%tree.column.node.name" path="field" property="fields" icon="#column">
+                                    </items>
+                                </folder>-->
+     						</items>
+                        </folder>
+                      </items>
+                 </folder>
+                 </tree>
+
+            <drivers managable="true">
+                <driver
+                        id="iotdb_jdbc"
+                        label="IoTDB"
+                        class="org.apache.iotdb.jdbc.IoTDBDriver"
+                        icon="icons/iotdb_icon.png"
+                        iconBig="icons/iotdb_icon_big.png"
+                        sampleURL="jdbc:iotdb://{host}:{port}/"
+                        defaultPort="6667"
+                        description="IoTDB JDBC driver"
+                        webURL="https://iotdb.apache.org/UserGuide/V0.10.x/Client/Programming%20-%20JDBC.html"
+                        categories="timeseries">
+                        <file type="jar" path="http://127.0.0.1:8080/dd/iotdb-jdbc2.jar"/>
+                         <parameter name="supports-limits" value="true"/>
+                		<parameter name="supports-references" value="false"/>
+                   <!-- <replace provider="generic" driver="es_generic"/>
+                    <file type="jar" path="maven:/org.apache.iotdb:iotdb-jdbc:RELEASE[0.12.0]"/>-->
+                    <!--<parameter name="supports-references" value="false"/>
+                    <parameter name="supports-indexes" value="false"/>
+                    <parameter name="omit-catalog" value="true"/>
+                    <parameter name="use-search-string-escape" value="true"/>-->
+                </driver>   
+            </drivers>
+
+        </datasource>
+    </extension>
+   
+     <!-- <extension point="org.jkiss.dbeaver.objectManager">
+      <manager class="org.jkiss.dbeaver.ext.iotdb.edit.IoTDBDatabaseManager" objectType="org.jkiss.dbeaver.ext.iotdb.model.IoTDBDatabase"/>
+      <manager class="org.jkiss.dbeaver.ext.iotdb.edit.IoTDBTableManager" objectType="org.jkiss.dbeaver.ext.iotdb.model.IoTDBTable"/>
+       
+      <manager class="org.jkiss.dbeaver.ext.iotdb.edit.IoTDBMeasurementManager" objectType="org.jkiss.dbeaver.ext.iotdb.model.IoTDBMeasurement"/>
+      
+    </extension>-->
+    <extension point="org.jkiss.dbeaver.sqlDialect">
+        <dialect id="iotdb" parent="generic" class="org.jkiss.dbeaver.ext.iotdb.model.IoTDBSQLDialect" label="IoTDB" description="Apache IoTDB SQL dialect." icon="platform:/plugin/org.jkiss.dbeaver.ext.generic/icons/iotdb_icon.png">
+        </dialect>
+    </extension>
+
+
+</plugin>
