@@ -22,18 +22,14 @@
 
 
     <extension point="org.jkiss.dbeaver.dataManager">
-<!--
-        <manager class="com.dbeaver.eeinfluxdb.data.managers.InfluxDBDocumentValueManager" id="com.dbeaver.eeinfluxdb.data.managers.InfluxDBDocumentValueManager">
-            <supports type="java.lang.Object"/>
-        </manager>
--->
     </extension>
 
     <extension point="org.eclipse.ui.menus">
-        <menuContribution allPopups="false" locationURI="menu:dataSourceMenu?after=transactions">
+    
+       <!-- <menuContribution allPopups="false" locationURI="menu:dataSourceMenu?after=transactions">
 
-            <menu label="%command.com.dbeaver.ee.influxdb.consistencyLevelSelect.name">
-                <dynamic id="com.dbeaver.ee.influxdb.consistencyLevelMenu" class="org.jkiss.dbeaver.ext.iotdb.views.IoTDBConsistencyLevelContributor"/>
+            <menu label="%command.com.dbeaver.ext.iotdb.consistencyLevelSelect.name">
+                <dynamic id="com.dbeaver.ext.iotdb.consistencyLevelMenu" class="org.jkiss.dbeaver.ext.iotdb.views.IoTDBConsistencyLevelContributor"/>
                 <visibleWhen>
                     <with variable="activeEditor">
                         <adapt type="org.jkiss.dbeaver.model.DBPDataSourceContainer">
@@ -43,7 +39,7 @@
                 </visibleWhen>
             </menu>
 
-        </menuContribution>
+        </menuContribution>-->
     </extension>
    
 
